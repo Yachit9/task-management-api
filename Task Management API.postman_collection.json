@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "ba2e2ce0-a5ea-426c-bc42-6a38fd132381",
+		"name": "Task Management API",
+		"description": "StartFragment\n\nThis is a REST API for managing tasks. It allows users to create, update, delete, assign and filter tasks by various parameter like assignedTo, status and dueDate. The API is built with Node.js, Express, and MongoDB.\n\nEndFragme",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13806607"
+	},
+	"item": [
+		{
+			"name": "Register a new User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Nahid Karim Ankur",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "nahidankur@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "#### A name, an email and a strong password is required for registration process.\n\nNote: Only one unique email can be used to create a new account. Multiple account creation under same email is not possible."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "nahidankur@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Aryue",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "User can login to his/her account by his valid email address and password associated to the account."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjExMzMyNSwiZXhwIjoxNjg4NzA1MzI1fQ.LCWrg6_lZWQjhDpEc2HD-sOZdcWcNxOW4QQhRKjvNTQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Task nnumber 2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Go to School",
+							"type": "text"
+						},
+						{
+							"key": "dueDate",
+							"value": "2023-07-06T14:30:00.000Z",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "pending",
+							"type": "text"
+						},
+						{
+							"key": "assignedTo",
+							"value": "648013459476ff191c188d6c",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/createtask",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"createtask"
+					]
+				},
+				"description": "#### To create a new Task, the required fields are:\n\n1. title (Must be a string)\n2. description (Must be a string)\n3. dueDate (Must be a Date)\n4. status (Must be a string)\n5. assignedTo (user can skip) (Must be a string)"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjExNTMyMywiZXhwIjoxNjg4NzA3MzIzfQ.tE_hg1tIfUtOnXFZR9yHh3JHi0bJY8w-hXNIsDaEdz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ5NWM4ZjJiYmM5MTQ1YzAxNDNiZDciLCJpYXQiOjE2ODI1Mzc4NDIsImV4cCI6MTY4NTEyOTg0Mn0.YGMqnU2SxmIh97Au54iOThpUkJfCpDi-8s7yWD961sM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/gettasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"gettasks"
+					]
+				},
+				"description": "#### By hitting this endpoint, a user can see all of this created tasks"
+			},
+			"response": []
+		},
+		{
+			"name": "update a task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjExNTMyMywiZXhwIjoxNjg4NzA3MzIzfQ.tE_hg1tIfUtOnXFZR9yHh3JHi0bJY8w-hXNIsDaEdz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Task 1 title updated",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/648012b39476ff191c188d69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"648012b39476ff191c188d69"
+					]
+				},
+				"description": "#### Logged in user can update his created task by id"
+			},
+			"response": []
+		},
+		{
+			"name": "delete a task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjExNTMyMywiZXhwIjoxNjg4NzA3MzIzfQ.tE_hg1tIfUtOnXFZR9yHh3JHi0bJY8w-hXNIsDaEdz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/64801649a014b8dd69bf0612",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"64801649a014b8dd69bf0612"
+					]
+				},
+				"description": "#### Logged in user can delete his created task by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtered Tasks by status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjEyNjUwOSwiZXhwIjoxNjg4NzE4NTA5fQ.3YrZtU6-jc1Ce1nQibxur4J4PP1WdQsJ-m01_HN1Rkk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/filter?status=completed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "completed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtered Tasks by assigned user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjEyNjUwOSwiZXhwIjoxNjg4NzE4NTA5fQ.3YrZtU6-jc1Ce1nQibxur4J4PP1WdQsJ-m01_HN1Rkk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/filter?assignedTo=648013459476ff191c188d6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "assignedTo",
+							"value": "648013459476ff191c188d6c",
+							"description": "Here Value is the assigned user objectId "
+						}
+					]
+				},
+				"description": "#### Tasks can be filtered by status"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtered Tasks by dueDate in ascending order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjEyNjUwOSwiZXhwIjoxNjg4NzE4NTA5fQ.3YrZtU6-jc1Ce1nQibxur4J4PP1WdQsJ-m01_HN1Rkk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/filter?sortBy=dueDate&sortOrder=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "dueDate"
+						},
+						{
+							"key": "sortOrder",
+							"value": "desc"
+						}
+					]
+				},
+				"description": "#### Tasks can be filtered by ascending order and dueDate"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtered Tasks by dueDate in descending order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjEyNjUwOSwiZXhwIjoxNjg4NzE4NTA5fQ.3YrZtU6-jc1Ce1nQibxur4J4PP1WdQsJ-m01_HN1Rkk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/filter?sortBy=dueDate&sortOrder=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "dueDate"
+						},
+						{
+							"key": "sortOrder",
+							"value": "asc"
+						}
+					]
+				},
+				"description": "#### Tasks can be filtered by descending order and dueDate"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtered Tasks by status and assigned user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODAwYmY4MjIyYjQ1NzdkMjBhOGUzNCIsImlhdCI6MTY4NjEyNjUwOSwiZXhwIjoxNjg4NzE4NTA5fQ.3YrZtU6-jc1Ce1nQibxur4J4PP1WdQsJ-m01_HN1Rkk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tasks/filter?status=pending&assignedTo=648013459476ff191c188d6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "pending"
+						},
+						{
+							"key": "assignedTo",
+							"value": "648013459476ff191c188d6c"
+						}
+					]
+				},
+				"description": "#### Tasks can be filtered by combination like assigned user and status"
+			},
+			"response": []
+		}
+	]
+}
