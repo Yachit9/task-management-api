@@ -54,7 +54,7 @@ You can use Postman or any other REST API client to test the API endpoints. Impo
 
 ## Author
 
-Nahid Karim Ankur
+# Nahid Karim Ankur
 
 ## License
 
