@@ -1,6 +1,6 @@
 # Task Management API
 
-This is a REST API for managing tasks. It allows users to create, update, delete, assign and filter tasks by various parameter like assignedTo, status and dueDate. The API is built with Node.js, Express, and MongoDB.
+This is a REST API for managing tasks. It allows users to create, update, delete, assign and filter tasks by various parameter like assignedTo, status and dueDate. The API is built with Node.js, Express, and MongoDB. A secured authentication system with jsonwebtoken has been implemented for login, registration and to protect the private routes
 
 # [Documentation is Here](https://documenter.getpostman.com/view/13806607/2s93sZ6ZEy)
 
