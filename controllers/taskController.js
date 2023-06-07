@@ -24,6 +24,9 @@ const createTask = asyncHandler ( async (req, res)=> {
         createdBy : req.user.id
 
     }) 
+        /// This email notification is commented and disabled 
+        // because sendergrid/mail package has stopped providing free api keys for testing purpuose.
+        // But I have wrote this part to show it can be setup in our api
 
         //  Send email notification to the assigned user
         // const assignedUser = await User.findById(assignedTo);
